@@ -5,6 +5,7 @@ This is an anagram puzzle generator created as my trial project for Parse.ly.  T
 This application leverages Docker for container images and Minikube for container orchestration.
 
 # Single container
+This image is available on Docker Hub, and can be run as a standalone container with the below command.
 ```bash
 docker run toofty5/anagrams
 ```
