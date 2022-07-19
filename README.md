@@ -7,7 +7,7 @@ This application leverages Docker for container images and Minikube for containe
 # Single container
 This image is available on Docker Hub, and can be run as a standalone container with the below command.
 ```bash
-docker run toofty5/anagrams
+docker run -p 5000:5000 toofty5/anagrams
 ```
 
 # Minikube Installation Script
