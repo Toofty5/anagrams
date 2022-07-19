@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anagrams
+  labels:
+    app: anagrams
+
+spec:
+  selector:
+    matchLabels:
+      app: anagrams
+
+  template:
+    metadata:
+      labels:
+        app: anagrams
+    spec:
+      containers:
+      - name: anagrams
+        image: toofty5/anagrams:latest
+        ports:
+        - containerPort: 5000
+          hostPort: 5000
