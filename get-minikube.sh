@@ -8,8 +8,6 @@ sudo install $filename /usr/local/bin/minikube
 
 rm ./$filename
 
-echo Minikube installation complete.  Initializing minikube.
+echo Minikube installation complete.  Starting minikube.
 minikube start
-
-
 
