@@ -18,7 +18,7 @@ The application is ready when Ansible reports that the port is forwarded.  Execu
 TASK [Forwarding Ports.  The application is now available at localhost:5000/anagrams?difficulty=5  Press Ctrl-C to exit.] ***
 ```
 
-At this point, start a new terminal session and send a query of your desired difficulty.
+At this point, leave the Playbook running and start a new terminal session and send a query of your desired difficulty.
 ```bash
 jay@anagrams:~$ curl localhost:5000/anagrams?difficulty=5
 {"result": "EODVW"}jay@anagrams:~$ 
