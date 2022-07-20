@@ -5,7 +5,7 @@ This is an anagram puzzle generator created as my trial project for Parse.ly.  T
 This application leverages Docker for container images and Minikube for container orchestration.
 
 
-# Ansible Playbook
+# Installation
 This application is available via an Ansible Playbook that downloads and installs Minikube, and then deploys the application.  The requirements are that Docker and Ansible are installed on the local computer.
 
 To download and run the Playbook, run the following:
@@ -20,10 +20,15 @@ The application is ready when Ansible reports that the port is forwarded.  Execu
 TASK [Forwarding Ports.  The application is now available at localhost:5000/anagrams?difficulty=5  Press Ctrl-C to exit.] ***
 ```
 
-At this point, start a new terminal session and send a query.
+At this point, start a new terminal session and send a query of your desired difficulty.
 ```bash
 jay@anagrams:~$ curl localhost:5000/anagrams?difficulty=5
 {"result": "EODVW"}jay@anagrams:~$ 
+```
+
+After exiting the Playbook, the application will still be running via Minikube orchestration, but the port will no longer be forwarded into the cluster.  To re-enable port forwarding, enter the below command:
+```bash
+minikube kubectl -- port-forward deployment/anagrams 5000:5000 
 ```
 
 
