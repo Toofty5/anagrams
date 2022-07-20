@@ -4,15 +4,31 @@ This is an anagram puzzle generator created as my trial project for Parse.ly.  T
 
 This application leverages Docker for container images and Minikube for container orchestration.
 
+
+# Ansible Playbook
+This application is available via an Ansible Playbook that downloads and installs Minikube, and then deploys the application.  The requirements are that Docker and Ansible are installed on the local computer.
+
+To download and run the Playbook, run the following:
+
+```bash
+curl -o anagrams-playbook.yaml https://raw.githubusercontent.com/Toofty5/anagrams/master/anagrams-playbook.yaml && \
+ansible-playbook anagrams-playbook.yaml
+```
+
+The application is ready when Ansible reports that the port is forwarded.  Execution will stop here:
+```
+TASK [Forwarding Ports.  The application is now available at localhost:5000/anagrams?difficulty=5  Press Ctrl-C to exit.] ***
+```
+
+At this point, start a new terminal session and send a query.
+```bash
+jay@anagrams:~$ curl localhost:5000/anagrams?difficulty=5
+{"result": "EODVW"}jay@anagrams:~$ 
+```
+
+
 # Single container
 This image is available on Docker Hub, and can be run as a standalone container with the below command.
 ```bash
 docker run -p 5000:5000 toofty5/anagrams
-```
-
-# Minikube Installation Script
-If Minikube is not installed on the machine, run the below command from a bash prompt to install Minikube:
-```bash
-curl https://github.com/Toofty5/anagrams/raw/master/get-minikube.sh
-sh ./get-minikube.sh
 ```
