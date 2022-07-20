@@ -11,3 +11,7 @@ rm ./$filename
 echo Minikube installation complete.  Starting minikube.
 minikube start
 
+echo Starting anagrams application
+minikube kubectl -- create -f https://github.com/Toofty5/anagrams/raw/master/anagrams.yaml
+
+minikube kubectl -- port-forward deployment/anagrams 5000:5000
