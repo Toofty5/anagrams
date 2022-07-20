@@ -1,0 +1,23 @@
+---
+- name: "Install Minikube and deploy Anagrams"
+  hosts: localhost
+  connection: local
+  tasks:
+
+    - name: "Get Minikube Installer"
+      ansible.builtin.get_url:
+        url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-{{ ansible_architecture }}
+        dest: ./minikube_installer
+
+    - name: "Install Minkube"
+      become: yes
+      ansible.builtin.command: install ./minikube_installer /usr/local/bin/minikube
+
+    - name: "Start Minikube"
+      ansible.builtin.command: minikube start
+
+    - name: "Deploy Anagrams"
+      ansible.builtin.command: minikube kubectl -- create -f https://github.com/Toofty5/anagrams/raw/master/anagrams.yaml
+
+    - name: "Forward Ports"
+      ansible.builtin.shell: nohup minikube kubectl -- port-forward deployment/anagrams 5000:5000 > /dev/null 2>&1 &
