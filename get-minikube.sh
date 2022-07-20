@@ -13,5 +13,5 @@ minikube start
 
 echo Starting anagrams application
 minikube kubectl -- create -f https://github.com/Toofty5/anagrams/raw/master/anagrams.yaml
-
+minikube kubectl -- wait deployment/anagrams --for=condition=Available=true 
 minikube kubectl -- port-forward deployment/anagrams 5000:5000
