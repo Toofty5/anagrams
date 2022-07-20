@@ -1,6 +1,6 @@
 # Anagrams
 
-This is an anagram puzzle generator created as my trial project for Parse.ly.  The purpose of the application is to receive a http query for a particular difficulty, and return a randomly rearranged English language word.  The difficulty of the puzzle is the number of unique letters in the word (and not the length of the word itself).
+This is an anagram puzzle generator created as my trial project for [Parse.ly](http://parse.ly).  The purpose of the application is to receive a http query for a particular difficulty, and return a randomly rearranged English language word.  The difficulty of the puzzle is the number of unique letters in the word (and not the length of the word itself).
 
 This is available via an Ansible Playbook (below) that downloads and installs Minikube, and then deploys the application.  The requirements are that Docker and Ansible are installed on the local computer.
 
@@ -31,7 +31,7 @@ minikube kubectl -- port-forward deployment/anagrams 5000:5000
 
 
 # Single container
-This image is available on Docker Hub, and can be run as a standalone container with the below command.
+This image is available on [Docker Hub](https://hub.docker.com/repository/docker/toofty5/anagrams), and can be run as a standalone container with the below command.
 ```bash
 docker run -p 5000:5000 toofty5/anagrams
 ```
