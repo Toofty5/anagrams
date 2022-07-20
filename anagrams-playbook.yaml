@@ -19,5 +19,8 @@
     - name: "Deploy Anagrams"
       ansible.builtin.command: minikube kubectl -- create -f https://github.com/Toofty5/anagrams/raw/master/anagrams.yaml
 
-    - name: "Forward Ports"
-      ansible.builtin.shell: nohup minikube kubectl -- port-forward deployment/anagrams 5000:5000 > /dev/null 2>&1 &
+    - name: "Waiting for deployment availability"
+      ansible.builtin.command: minikube kubectl -- wait deployment/anagrams --for=condition=Available=true 
+
+    - name: "Forwarding Ports.  The application is now available at localhost:5000/anagrams?difficulty=5  Press Ctrl-C to exit."
+      ansible.builtin.shell:  minikube kubectl -- port-forward deployment/anagrams 5000:5000 
