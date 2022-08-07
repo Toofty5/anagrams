@@ -28,6 +28,11 @@ After exiting the Playbook, the application will still be running via Minikube o
 ```bash
 minikube kubectl -- port-forward deployment/anagrams 5000:5000 
 ```
+To stop Minikube, run the following command:
+```bash
+minikube stop
+```
+
 
 
 # Single container
